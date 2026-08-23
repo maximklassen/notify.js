@@ -1,0 +1,25 @@
+node_modules/
+
+dist/
+build/
+*.js
+*.js.map
+*.d.ts
+
+# src/**/*.js
+# src/**/*.js.map
+# src/**/*.d.ts
+
+*.tsbuildinfo
+.eslintcache
+.jest-cache/
+coverage/
+
+logs/
+*.log
+.env
+.env.local
+
+.DS_Store
+.vscode/
+.idea/
