@@ -30,6 +30,8 @@ export interface NotifyElement extends HTMLDivElement {
 }
 
 export class Notify {
+    private static defaultInstance: Notify | null = null;
+
     private options: ResolvedNotifyOptions;
     private box: HTMLElement;
     private notifies: NotifyElement[] = [];
@@ -38,6 +40,43 @@ export class Notify {
         this.options = this.resolveOptions(options);
         this.box = this.getOrCreateBox(this.options.position);
     }
+
+    // --- Static API ---
+
+    /** Get or create the default instance */
+    private static getDefaultInstance(): Notify {
+        if (!Notify.defaultInstance) {
+            Notify.defaultInstance = new Notify();
+        }
+        return Notify.defaultInstance;
+    }
+
+    /** Configure the default instance globally */
+    public static configure(options: NotifyOptions): void {
+        Notify.defaultInstance = new Notify(options);
+    }
+
+    /** Quick call for an info notification */
+    public static info(text: string, title?: string): NotifyElement | null {
+        return Notify.getDefaultInstance().new({ text, title, type: 'info' });
+    }
+
+    /** Quick call for a success notification */
+    public static success(text: string, title?: string): NotifyElement | null {
+        return Notify.getDefaultInstance().new({ text, title, type: 'success' });
+    }
+
+    /** Quick call for a warning notification */
+    public static warning(text: string, title?: string): NotifyElement | null {
+        return Notify.getDefaultInstance().new({ text, title, type: 'warning' });
+    }
+
+    /** Quick call for an error notification */
+    public static error(text: string, title?: string): NotifyElement | null {
+        return Notify.getDefaultInstance().new({ text, title, type: 'error' });
+    }
+
+    // --- Instance methods ---
 
     private resolveOptions(options: NotifyOptions): ResolvedNotifyOptions {
         const position: NotifyPosition = ['left', 'right', 'center'].includes(options.position as NotifyPosition)
