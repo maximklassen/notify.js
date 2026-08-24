@@ -1,14 +1,14 @@
 {
-    "name": "@maximklassen/notify",
+    "name": "@maximklassen/notify.js",
     "version": "1.0.0",
     "description": "Lightweight TypeScript notification library",
-    "main": "./dist/index.js",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.ts",
-    "unpkg": "./dist/index.global.js",
+    "main": "./dist/notify.cjs.js",
+    "module": "./dist/notify.esm.js",
+    "unpkg": "./dist/notify.js",
+    "jsdelivr": "./dist/notify.js",
+    "types": "./dist/notify.d.ts",
     "files": [
-        "dist",
-        "src/notify.css"
+        "dist"
     ],
     "scripts": {
         "build": "tsup",
