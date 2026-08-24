@@ -212,3 +212,5 @@ export class Notify {
         }, this.options.close.time);
     }
 }
+
+export default Notify;

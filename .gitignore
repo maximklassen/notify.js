@@ -1,8 +1,12 @@
 node_modules/
 
-dist/
+#dist/
+dist/*.ts
+dist/*.mts
+dist/*.cjs.js
+dist/*.esm.js
 build/
-*.js
+#*.js
 *.js.map
 *.d.ts
 
